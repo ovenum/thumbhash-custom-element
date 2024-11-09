@@ -8,6 +8,9 @@ test.describe("Features", () => {
 
   test("renders the canvas with the expected attributes", async ({ page }) => {
     page.setViewportSize({ width: 1000, height: 1000 });
+
+    await page.waitForTimeout(2000);
+
     // Locate the thumb-hash element
     const thumbHash = page.locator('thumb-hash');
     const canvas = thumbHash.locator('canvas');
