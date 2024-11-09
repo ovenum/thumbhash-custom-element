@@ -9,7 +9,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  tests:
+    # The job needs a name so that it can be added as a check to the GitHub ruleset:
+    name: E2E Tests
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
