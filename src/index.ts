@@ -1,3 +1,3 @@
-import { ThumbHashElement } from "./ThumbhashElement.js";
+import { ThumbHashElement } from "./ThumbHashElement.js";
 
 export default ThumbHashElement;
