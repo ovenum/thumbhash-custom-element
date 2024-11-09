@@ -1,0 +1,61 @@
+{
+  "name": "thumbhash-custom-element",
+  "amdName": "ThumbhashCustomElement",
+  "version": "0.0.1",
+  "description": "A custom element that renders a thumbhash placeholder for your lazy-loaded images 🎨",
+  "author": {
+    "name": "Rasso Hilber",
+    "email": "mail@rassohilber.com",
+    "url": "https://rassohilber.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hirasso/thumbhash-custom-element.git"
+  },
+  "license": "ISC",
+  "type": "module",
+  "source": "./src/index.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.module.js",
+  "unpkg": "./dist/index.umd.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.modern.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "format": "npx prettier 'src/**/*.{js,ts,mjs}' --write",
+    "prepublishOnly": "npm run build",
+    "build": "npm run clean && npm run build:module && npm run build:bundle",
+    "build:module": "BROWSERSLIST_ENV=modern microbundle src/index.ts --format modern,esm,cjs",
+    "build:bundle": "BROWSERSLIST_ENV=production microbundle src/index.ts --format umd --external none",
+    "watch": "BROWSERSLIST_ENV=development microbundle src/index.ts --watch --format modern",
+    "docs:dev": "astro dev --root docs",
+    "docs:build": "astro build --root docs",
+    "docs:serve": "astro build --root docs && astro preview --root docs",
+    "test": "npm run test:e2e",
+    "test:e2e": "npx playwright test --config ./tests/e2e/config.playwright.ts",
+    "test:e2e:dev": "PLAYWRIGHT_ENV=dev npm run test:e2e -- --ui"
+  },
+  "dependencies": {
+    "thumbhash": "^0.1.1"
+  },
+  "devDependencies": {
+    "@astrojs/mdx": "^1.1.5",
+    "@playwright/test": "^1.40.1",
+    "astro": "^3.6.4",
+    "astro-expressive-code": "^0.29.2",
+    "astro-feather": "^1.0.0",
+    "microbundle": "^0.15.1",
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.2"
+  }
+}

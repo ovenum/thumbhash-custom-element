@@ -1,0 +1,37 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { ArrowRightIcon, EyeIcon, EyeOffIcon } from "astro-feather";
+import { SITE_DESCRIPTION } from "../consts";
+import { Image } from "astro:assets";
+import demoImage from "../images/original.jpg";
+---
+
+<Layout isFrontPage={true}>
+  <p class="is-h2" slot="after-header">{SITE_DESCRIPTION}</p>
+
+  <figure
+    class="demo-image"
+    style={{ "aspect-ratio": demoImage.width / demoImage.height }}
+  >
+    <button type="button" onclick="this.parentNode.classList.toggle('hide-image')" title="Toggle image">
+      <span class="show-if-hidden"><EyeIcon /> Show image</span>
+      <span class="show-if-visible"><EyeOffIcon /> Hide image</span>
+    </button>
+
+    <thumbhash-element
+      hash="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA"
+      aria-hidden="true"></thumbhash-element>
+    <Image src={demoImage} alt="A bird." loading="lazy" />
+  </figure>
+</Layout>
+
+<style>
+  #footer {
+    margin-block: 5%;
+  }
+</style>
+
+<script>
+  import defineElement from "../../../src/index.js";
+  defineElement();
+</script>

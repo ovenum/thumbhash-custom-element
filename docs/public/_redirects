@@ -1,0 +1,3 @@
+# @see https://docs.netlify.com/routing/redirects/redirect-options/#domain-level-redirects
+# http://thumbhash-custom-element.netlify.app/*     https://thumbhash-custom-element.js.org/:splat 301!
+# https://thumbhash-custom-element.netlify.app/*    https://thumbhash-custom-element.js.org/:splat 301!

@@ -1,0 +1,161 @@
+:root {
+  --gap: min(2rem, calc(0.5rem + 2vw));
+  --double-gap: calc(var(--gap) * 2);
+  --half-gap: calc(var(--gap) * 0.5);
+  --background: rgb(26, 26, 26);
+  --color: rgb(225, 225, 225);
+  --accent: rgb(27, 235, 158);
+
+  --saturation: 100%;
+  --lightness: 80%;
+
+  --text-default: clamp(14px, 3vw, 15px);
+  --text-medium: clamp(14px, 3vw, 23px);
+  --text-large: clamp(20px, 3vw, 30px);
+  --sidebar-width: 400px;
+  --font-mono: "IBM", monospace;
+  --font-sans: system-ui, sans-serif;
+  font-family: var(--font-mono);
+  --border-style: 1px solid rgb(0 0 0 / 0.2);
+
+  background: var(--background);
+  color: var(--color);
+  font-size: var(--text-default);
+  font-weight: 300;
+  scroll-behavior: smooth;
+}
+
+body {
+  hyphens: auto;
+  font-size: var(--text-default);
+}
+
+.tile,
+.cell {
+  font-weight: 300;
+  color: black;
+}
+
+.tiles,
+.table {
+  overflow: hidden;
+}
+
+.is-h2 {
+  font-size: var(--text-medium);
+  max-width: 60ch;
+  margin-inline: auto;
+  color: var(--accent);
+  font-style: italic;
+  text-align: center;
+}
+
+.navlist {
+  display: flex;
+  gap: var(--half-gap);
+  justify-content: center;
+}
+
+.navlist_item {
+  display: flex;
+}
+
+.button {
+  appearance: none;
+  background: none;
+  color: var(--color);
+  font-style: italic;
+  border: 1px solid var(--color);
+  border-radius: 2em;
+  padding: 0.3em 1.2em 0.4em;
+  cursor: pointer;
+  transition: color 150ms, background 150ms;
+  text-decoration: none;
+  display: flex;
+  gap: 0.25em;
+  align-items: center;
+  /* font-size: 1.3em; */
+  font-size: var(--text-medium);
+}
+
+.button .feather:last-child {
+  margin-inline-end: -0.5em;
+}
+
+.button .feather:first-child {
+  margin-inline-start: -0.5em;
+}
+
+@media (hover: hover) {
+  .button:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--background);
+  }
+}
+
+.feather {
+  display: block;
+  stroke-width: 1px;
+}
+
+em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+/**
+ * Thumbhash Element
+ */
+
+figure,
+figure img {
+  position: relative;
+}
+figure img {
+  width: 100%;
+  height: auto;
+}
+figure [data-thumbhash-element] {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/**
+ * Thumbhash element demo styles
+ */
+.demo-image {
+  margin-inline: 1rem;
+}
+.demo-image button {
+  position: absolute;
+  z-index: 3;
+  margin: 1rem;
+  appearance: none;
+  background: white;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.4em 1em 0.5em;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgb(0 0 0 / 0.2);
+}
+.demo-image button > span {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+.demo-image:not(.hide-image) .show-if-hidden,
+.demo-image.hide-image .show-if-visible {
+  display: none;
+}
+.demo-image img {
+  transition: opacity 200ms;
+}
+.demo-image.hide-image img {
+  opacity: 0;
+}
