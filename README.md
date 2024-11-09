@@ -7,7 +7,7 @@
 
 ## Demo
 
-[thumbhash-custom-element.js.org](https://thumbhash-custom-element.js.org)
+[thumbhash-custom-element.netlify.app](https://thumbhash-custom-element.netlify.app)
 
 ## Installation
 
