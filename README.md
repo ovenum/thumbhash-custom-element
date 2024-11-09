@@ -18,16 +18,16 @@ npm i @hirasso/thumbhash-custom-element
 ```
 
 ```js
-import defineThumbhashElement from "thumbhash-custom-element";
-defineThumbhashElement();
+import ThumbHashElement from "thumbhash-custom-element";
+ThumbHashElement.define();
 ```
 
 Or include the minified production file from a CDN:
 
 ```html
-<script src="https://unpkg.com/thumbhash-custom-element@0"></script>
-<script>
-  defineThumbhashElement();
+<script type="module">
+  import ThumbHashElement from "https://unpkg.com/@hirasso/thumbhash-custom-element@0?module";
+  ThumbHashElement.define();
 </script>
 ```
 

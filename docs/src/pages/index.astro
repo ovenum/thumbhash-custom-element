@@ -8,7 +8,9 @@ import demoImage from "../images/original.jpg";
 
 <Layout isFrontPage={true}>
   <p class="is-h2" slot="after-header">
-    A custom element that renders a <a href="https://github.com/evanw/thumbhash">thumbhash</a> placeholder for your lazy-loaded images
+    A custom element that renders a <a href="https://github.com/evanw/thumbhash"
+      >thumbhash</a
+    > placeholder for your lazy-loaded images
   </p>
 
   <figure
@@ -40,3 +42,8 @@ import demoImage from "../images/original.jpg";
   import ThumbHashElement from "../../../src/index.js";
   ThumbHashElement.define();
 </script>
+
+<!-- <script type="module">
+  import ThumbHashElement from "https://unpkg.com/@hirasso/thumbhash-custom-element@0?module";
+  ThumbHashElement.define();
+</script> -->
