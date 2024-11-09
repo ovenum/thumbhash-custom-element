@@ -14,7 +14,7 @@
 Install from npm and import it into your bundle:
 
 ```bash
-npm i thumbhash-custom-element
+npm i @hirasso/thumbhash-custom-element
 ```
 
 ```js

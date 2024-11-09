@@ -1,5 +1,5 @@
 {
-  "name": "thumbhash-custom-element",
+  "name": "@hirasso/thumbhash-custom-element",
   "amdName": "ThumbhashCustomElement",
   "version": "0.0.1",
   "description": "A custom element that renders a thumbhash placeholder for your lazy-loaded images 🎨",
