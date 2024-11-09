@@ -10,10 +10,12 @@ on:
 
 jobs:
   tests:
-    # The job needs a name so that it can be added as a check to the GitHub ruleset:
-    name: E2E Tests
-    timeout-minutes: 60
     runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    # The job needs a name so that it can be added as a check to the GitHub ruleset:
+    name: "E2E Tests"
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
