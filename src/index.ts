@@ -1,7 +1,3 @@
-import Element from "./Element.js";
+import { ThumbHashElement } from "./ThumbhashElement.js";
 
-export default function defineElement() {
-  if (!window.customElements.get("thumbhash-element")) {
-    customElements.define("thumbhash-element", Element);
-  }
-}
+export default ThumbHashElement;

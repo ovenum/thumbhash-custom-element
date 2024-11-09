@@ -7,20 +7,25 @@ import demoImage from "../images/original.jpg";
 ---
 
 <Layout isFrontPage={true}>
-  <p class="is-h2" slot="after-header">{SITE_DESCRIPTION}</p>
+  <p class="is-h2" slot="after-header">
+    A custom element that renders a <a href="https://github.com/evanw/thumbhash">thumbhash</a> placeholder for your lazy-loaded images
+  </p>
 
   <figure
     class="demo-image"
     style={{ "aspect-ratio": demoImage.width / demoImage.height }}
   >
-    <button type="button" onclick="this.parentNode.classList.toggle('hide-image')" title="Toggle image">
+    <button
+      type="button"
+      onclick="this.parentNode.classList.toggle('hide-image')"
+      title="Toggle image"
+      class="button"
+    >
       <span class="show-if-hidden"><EyeIcon /> Show image</span>
       <span class="show-if-visible"><EyeOffIcon /> Hide image</span>
     </button>
 
-    <thumbhash-element
-      hash="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA"
-      aria-hidden="true"></thumbhash-element>
+    <thumb-hash value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA"></thumb-hash>
     <Image src={demoImage} alt="A bird." loading="lazy" />
   </figure>
 </Layout>
@@ -32,6 +37,6 @@ import demoImage from "../images/original.jpg";
 </style>
 
 <script>
-  import defineElement from "../../../src/index.js";
-  defineElement();
+  import ThumbHashElement from "../../../src/index.js";
+  ThumbHashElement.define();
 </script>

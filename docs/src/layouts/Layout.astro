@@ -28,7 +28,7 @@ const { title, description, noindex, isFrontPage, intro } = Astro.props;
   <body>
     <div class="container">
       <header>
-        <h1 class="site-title">{SITE_TITLE}</h1>
+        <h1 class="site-title">&#x3C;thumb-hash&#x3E;</h1>
         <slot name="after-header" />
         <nav>
           <ul class="navlist">
@@ -50,7 +50,7 @@ const { title, description, noindex, isFrontPage, intro } = Astro.props;
         text-align: center;
         padding: 5vw 4vw;
         display: grid;
-        gap: var(--half-gap);
+        gap: var(--gap);
       }
       .site-title {
         font-size: min(60px, 12vw);
