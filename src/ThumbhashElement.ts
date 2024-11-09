@@ -12,7 +12,7 @@ export class ThumbHashElement extends HTMLElement {
   /**
    * Attach this class to the custom element <thumb-hash></thumb-hash>
    */
-  static define() {
+  static init() {
     if (!window.customElements.get("thumb-hash")) {
       customElements.define("thumb-hash", ThumbHashElement);
     }
