@@ -37,9 +37,9 @@ Or include the minified production file from a CDN:
 
 If the script is installed an initialized, you can render thumbhash placeholders automatically by using the custom element:
 
-```html
+```diff
 <figure>
-  <thumb-hash value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" aria-hidden="true"></thumb-hash>
++  <thumb-hash value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" aria-hidden="true"></thumb-hash>
   <img src="{{ url }}" loading="lazy" width="{{ width }}" height="{{ height }}" alt="{{ alt }}">
 </figure>
 ```
