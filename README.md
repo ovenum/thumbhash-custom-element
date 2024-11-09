@@ -39,7 +39,7 @@ If the script is installed an initialized, you can render thumbhash placeholders
 
 ```html
 <figure>
-  <thumb-hash value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" aria-hidden="true"></thumbhash-element>
+  <thumb-hash value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" aria-hidden="true"></thumb-hash>
   <img src="{{ url }}" loading="lazy" width="{{ width }}" height="{{ height }}" alt="{{ alt }}">
 </figure>
 ```
