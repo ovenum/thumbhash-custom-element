@@ -35,12 +35,23 @@ Or include the minified production file from a CDN:
 
 ### Markup
 
-If the script is installed an initialized, you can render thumbhash placeholders automatically by using the custom element:
+If the script is installed an initialized, you can start adding `<thumb-hash>` to your markup:
 
 ```diff
 <figure>
 +  <thumb-hash value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" aria-hidden="true"></thumb-hash>
   <img src="{{ url }}" loading="lazy" width="{{ width }}" height="{{ height }}" alt="{{ alt }}">
+</figure>
+```
+
+The custom element will automatically create a canvas with the thumbhash image for you:
+
+```diff
+<figure>
++  <thumb-hash value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" aria-hidden="true">
++    <canvas width="32" height="32" data-thumb-hash-canvas style="width: 100%; height: 100%;"></canvas>
++  </thumb-hash>
+  <img src="https://example.com/image.jpg" loading="lazy" width="32" height="32" alt="My nice image">
 </figure>
 ```
 
