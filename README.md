@@ -40,7 +40,7 @@ If the script is installed an initialized, you can start adding `<thumb-hash>` t
 ```diff
 <figure>
 +  <thumb-hash value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" aria-hidden="true"></thumb-hash>
-  <img src="{{ url }}" loading="lazy" width="{{ width }}" height="{{ height }}" alt="{{ alt }}">
+  <img src="https://example.com/image.jpg" loading="lazy" width="32" height="32" alt="My nice image">
 </figure>
 ```
 
