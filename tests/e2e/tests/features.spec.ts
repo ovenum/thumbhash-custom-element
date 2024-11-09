@@ -6,45 +6,15 @@ test.describe("Features", () => {
     await page.goto("/");
   });
 
-  test("mirrors vertical scroll positions", async ({ page }) => {
+  test("renders the canvas with the expected attributes", async ({ page }) => {
     page.setViewportSize({ width: 1000, height: 1000 });
-    await page.getByTestId("first-vertical").scrollIntoViewIfNeeded();
-    await scrollToEnd(page, "first-vertical");
-    await sleep(1000);
-    expect(page.getByTestId("third-vertical_tile--last")).toBeInViewport();
-  });
-
-  test("mirrors horizontal scroll positions", async ({ page }) => {
-    page.setViewportSize({ width: 1000, height: 1000 });
-    await page.getByTestId("third-horizontal").scrollIntoViewIfNeeded();
-    await scrollToEnd(page, "first-horizontal");
-    await sleep(1000);
-    await expect(
-      page.getByTestId("third-horizontal_tile--last")
-    ).toBeInViewport();
-  });
-
-  test("mirrors positions in both directions", async ({
-    page,
-    browserName,
-  }) => {
-    page.setViewportSize({ width: 1000, height: 1000 });
-    await page.getByTestId("first-both").scrollIntoViewIfNeeded();
-    await scrollToEnd(page, "first-both");
-    await sleep(2000);
-    await expect(page.getByTestId("third-both_tile--last")).toBeInViewport();
-  });
-
-  test("mirrors positions to and from the root", async ({ page }) => {
-    await page.goto("/root");
-    // root > element
-    page.setViewportSize({ width: 1400, height: 1000 });
-    await scrollToEnd(page);
-    await sleep(1000);
-    await expect(page.getByTestId("scroller_tile--last")).toBeInViewport();
-    // element > root
-    await scrollTo(page, { y: 0 }, "scroller");
-    await sleep(1000);
-    await expectScrollPosition(page, { x: 0, y: 0 });
+    // Locate the thumb-hash element
+    const thumbHash = page.locator('thumb-hash');
+    const canvas = thumbHash.locator('canvas');
+    expect(canvas).toHaveCount(1);
+    expect(canvas).toHaveAttribute('width');
+    expect(canvas).toHaveAttribute('height');
+    expect(canvas).toHaveAttribute('data-thumb-hash-canvas');
+    expect(canvas).toHaveAttribute('style', 'width: 100%; height: 100%;');
   });
 });
