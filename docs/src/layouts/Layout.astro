@@ -28,7 +28,7 @@ const { title, description, noindex, isFrontPage, intro } = Astro.props;
   <body>
     <div class="container">
       <header>
-        <h1 class="site-title">&#x3C;thumb-hash /&#x3E;</h1>
+        <h1 class="site-title">&#x3C;thumb-hash&nbsp;/&#x3E;</h1>
         <slot name="after-header" />
         <nav>
           <ul class="navlist">
@@ -53,10 +53,11 @@ const { title, description, noindex, isFrontPage, intro } = Astro.props;
         gap: var(--gap);
       }
       .site-title {
-        font-size: min(60px, 12vw);
+        font-size: min(60px, 10vw);
         --_offset: 0.02em;
         font-weight: 200;
         line-height: 0.9;
+        letter-spacing: -0.05em;
       }
       .is-h2 {
         padding-block: 0;
