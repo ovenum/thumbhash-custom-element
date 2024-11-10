@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: 20
 
-       # @see https://pnpm.io/continuous-integration#github-actions
+      # @see https://pnpm.io/continuous-integration#github-actions
       - name: Setup and install pnpm
         uses: pnpm/action-setup@v4
         with:
