@@ -25,7 +25,7 @@ jobs:
         run: pnpm i
 
       - name: Install sharp
-        run: pnpm add sharp --ignore-engines
+        run: pnpm add sharp # @see https://github.com/withastro/astro/issues/9536#issuecomment-1880058215
 
       - name: Install Playwright Browsers
         run: pnpm run test:e2e:install
