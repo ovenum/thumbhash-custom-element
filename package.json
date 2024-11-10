@@ -8,6 +8,7 @@
     "email": "mail@rassohilber.com",
     "url": "https://rassohilber.com"
   },
+  "packageManager": "pnpm@9.11.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/hirasso/thumbhash-custom-element.git"
@@ -31,19 +32,20 @@
     "dist"
   ],
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "clean": "rm -rf ./dist",
     "format": "npx prettier 'src/**/*.{js,ts,mjs}' --write",
-    "prepublishOnly": "npm run build",
-    "build": "npm run clean && npm run build:module && npm run build:bundle",
+    "prepublishOnly": "pnpm build",
+    "build": "pnpm clean && pnpm build:module && pnpm build:bundle",
     "build:module": "BROWSERSLIST_ENV=modern microbundle src/index.ts --format modern,esm,cjs",
     "build:bundle": "BROWSERSLIST_ENV=production microbundle src/index.ts --format umd --external none",
     "watch": "BROWSERSLIST_ENV=development microbundle src/index.ts --watch --format modern",
     "docs:dev": "astro dev --root docs",
     "docs:build": "astro build --root docs",
     "docs:serve": "astro build --root docs && astro preview --root docs",
-    "test": "npm run test:e2e",
+    "test": "pnpm test:e2e",
     "test:e2e": "npx playwright test --config ./tests/e2e/config.playwright.ts",
-    "test:e2e:dev": "PLAYWRIGHT_ENV=dev npm run test:e2e -- --ui"
+    "test:e2e:dev": "PLAYWRIGHT_ENV=dev pnpm test:e2e -- --ui"
   },
   "dependencies": {
     "thumbhash": "^0.1.1"
