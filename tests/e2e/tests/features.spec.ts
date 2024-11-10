@@ -10,7 +10,7 @@ test.describe("Features", () => {
     await page.goto('/');
     page.setViewportSize({ width: 1000, height: 1000 });
 
-    // await page.waitForTimeout(2000);
+    await page.waitForTimeout(2000);
 
     // Locate the thumb-hash element
     const canvas = page.locator('.demo.--canvas thumb-hash canvas');
@@ -24,7 +24,7 @@ test.describe("Features", () => {
     await page.goto('/');
     page.setViewportSize({ width: 1000, height: 1000 });
 
-    // await page.waitForTimeout(2000);
+    await page.waitForTimeout(2000);
 
     const div = page.locator('.demo.--average thumb-hash div');
     expect(div).toHaveCount(1);
