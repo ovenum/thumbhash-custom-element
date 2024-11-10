@@ -1,7 +1,4 @@
-import {
-  decodeThumbHash,
-  getAverageColor,
-} from "./support/functions.js";
+import { decodeThumbHash, getAverageColor } from "./support/functions.js";
 
 /**
  * A custom element that automatically renders a thumbhash placeholder
@@ -22,7 +19,7 @@ export class ThumbHashElement extends HTMLElement {
     this.canvas.style.height = "100%";
 
     // Hide from screen readers
-    this.setAttribute('aria-hidden', 'true');
+    this.setAttribute("aria-hidden", "true");
   }
 
   /**
