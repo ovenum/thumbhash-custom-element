@@ -24,6 +24,9 @@ jobs:
       - name: Install dependencies
         run: pnpm i
 
+      - name: Install sharp
+        run: pnpm add sharp --ignore-engines
+
       - name: Install Playwright Browsers
         run: pnpm run test:e2e:install
 
