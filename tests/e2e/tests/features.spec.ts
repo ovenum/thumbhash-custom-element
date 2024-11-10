@@ -6,18 +6,28 @@ test.describe("Features", () => {
     await page.goto("/");
   });
 
-  test("renders the canvas with the expected attributes", async ({ page }) => {
+  test("renders a canvas with the thumbhash", async ({ page }) => {
+    await page.goto('/');
     page.setViewportSize({ width: 1000, height: 1000 });
 
     await page.waitForTimeout(2000);
 
     // Locate the thumb-hash element
-    const thumbHash = page.locator('thumb-hash');
-    const canvas = thumbHash.locator('canvas');
+    const canvas = page.locator('.demo.--canvas thumb-hash canvas');
     expect(canvas).toHaveCount(1);
     expect(canvas).toHaveAttribute('width');
     expect(canvas).toHaveAttribute('height');
-    expect(canvas).toHaveAttribute('data-thumb-hash-canvas');
     expect(canvas).toHaveAttribute('style', 'width: 100%; height: 100%;');
+  });
+
+  test("renders a div with the average color", async ({ page }) => {
+    await page.goto('/');
+    page.setViewportSize({ width: 1000, height: 1000 });
+
+    await page.waitForTimeout(2000);
+
+    const div = page.locator('.demo.--average thumb-hash div');
+    expect(div).toHaveCount(1);
+    expect(div).toHaveAttribute('style', 'width: 100%; height: 100%; background: rgb(111, 51, 0);');
   });
 });

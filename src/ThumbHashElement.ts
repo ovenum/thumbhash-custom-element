@@ -1,12 +1,25 @@
-import { thumbHashToRGBA } from "thumbhash";
-import { getCanvas } from "./support/utils.js";
+import { decodeThumbHash, getAverageColor } from "./support/functions.js";
 
 /**
  * A custom element that automatically renders a thumbhash placeholder
  */
 export class ThumbHashElement extends HTMLElement {
+  canvas: HTMLCanvasElement;
+  shadowRoot: ShadowRoot;
+
   constructor() {
     super();
+
+    this.shadowRoot = this.attachShadow({ mode: "open" });
+
+    // Create a canvas and add it to the shadow root
+    this.canvas = document.createElement("canvas");
+
+    this.canvas.style.width = "100%";
+    this.canvas.style.height = "100%";
+
+    // Hide from screen readers
+    this.setAttribute("aria-hidden", "true");
   }
 
   /**
@@ -20,34 +33,52 @@ export class ThumbHashElement extends HTMLElement {
 
   connectedCallback() {
     const hash = this.value.trim();
-    if (hash) {
-      this.render(hash);
+    if (!hash) {
+      return;
     }
+    if (this.average) {
+      this.renderAverage(hash);
+      return;
+    }
+    this.renderCanvas(hash);
   }
 
   get value() {
     return this.getAttribute("value") || "";
   }
 
+  get average() {
+    return !!this.getAttribute("average");
+  }
+
   /**
    * Render and append a canvas using the thumbhash data
    */
-  render(hash: string) {
-    const bytes = Uint8Array.from(atob(hash), (c) => c.charCodeAt(0));
-    const { w: width, h: height, rgba: pixels } = thumbHashToRGBA(bytes);
+  renderCanvas(hash: string) {
+    const { width, height, pixels } = decodeThumbHash(hash);
 
-    const canvas = getCanvas(width, height, pixels);
+    const ctx = this.canvas.getContext("2d");
+    if (!ctx) return;
 
-    if (!canvas) {
-      return;
-    }
+    this.canvas.width = width;
+    this.canvas.height = height;
 
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
+    const imageData = ctx.createImageData(width, height);
+    imageData.data.set(pixels);
+    ctx.putImageData(imageData, 0, 0);
 
-    canvas.setAttribute("data-thumb-hash-canvas", "");
+    this.shadowRoot.appendChild(this.canvas);
+  }
 
-    // this.replaceWith(canvas);
-    this.appendChild(canvas);
+  /**
+   * Renders the average color
+   */
+  renderAverage(hash: string) {
+    const rgba = getAverageColor(hash);
+    const div = document.createElement("div");
+    div.style.width = "100%";
+    div.style.height = "100%";
+    div.style.background = rgba;
+    this.shadowRoot.appendChild(div);
   }
 }
