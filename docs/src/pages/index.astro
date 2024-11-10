@@ -13,23 +13,51 @@ import demoImage from "../images/original.jpg";
     > placeholder for your lazy-loaded images
   </p>
 
-  <figure
-    class="demo-image"
-    style={{ "aspect-ratio": demoImage.width / demoImage.height }}
-  >
-    <button
-      type="button"
-      onclick="this.parentNode.classList.toggle('hide-image')"
-      title="Toggle image"
-      class="button"
-    >
-      <span class="show-if-hidden"><EyeIcon /> Show image</span>
-      <span class="show-if-visible"><EyeOffIcon /> Hide image</span>
-    </button>
+  <section class="demos">
 
-    <thumb-hash value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA"></thumb-hash>
-    <Image src={demoImage} alt="A bird." loading="lazy" />
-  </figure>
+    <div class="demo --canvas">
+      <h2>&#x3C;thumb-hash value=&#x22;YTkGJwaRh...&#x22; /&#x3E;</h2>
+      <figure
+        class="demo-image"
+        style={{ "aspect-ratio": demoImage.width / demoImage.height }}
+      >
+        <button
+          type="button"
+          onclick="this.parentNode.classList.toggle('hide-image')"
+          title="Toggle image"
+          class="button"
+        >
+          <span class="show-if-hidden"><EyeIcon /> Show image</span>
+          <span class="show-if-visible"><EyeOffIcon /> Hide image</span>
+        </button>
+
+        <thumb-hash value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" />
+        <Image src={demoImage} alt="A bird." loading="lazy" />
+      </figure>
+    </div>
+
+    <div class="demo --average">
+      <h2>&#x3C;thumb-hash value=&#x22;YTkGJwaRh...&#x22; average /&#x3E;</h2>
+      <figure
+        class="demo-image"
+        style={{ "aspect-ratio": demoImage.width / demoImage.height }}
+      >
+        <button
+          type="button"
+          onclick="this.parentNode.classList.toggle('hide-image')"
+          title="Toggle image"
+          class="button"
+        >
+          <span class="show-if-hidden"><EyeIcon /> Show image</span>
+          <span class="show-if-visible"><EyeOffIcon /> Hide image</span>
+        </button>
+
+        <thumb-hash value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" average />
+        <Image src={demoImage} alt="A bird." loading="lazy" />
+      </figure>
+    </div>
+
+  </section>
 </Layout>
 
 <style>
@@ -41,6 +69,7 @@ import demoImage from "../images/original.jpg";
 <script>
   import ThumbHashElement from "../../../src/index.js";
   ThumbHashElement.init();
+  // console.log(document.querySelector('thumb-hash')?.shadowRoot?.querySelector('canvas')?.outerHTML);
 </script>
 
 <!-- <script type="module">

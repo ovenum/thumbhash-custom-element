@@ -135,3 +135,16 @@ p a {
   text-decoration-thickness: var(--underline-thickness, 0.07em);
   text-underline-offset: var(--underline-offset, 0.1em);
 }
+
+.demos {
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+  padding: var(--gap);
+  margin-inline: auto;
+}
+
+.demo {
+  display: grid;
+  gap: var(--gap);
+}
