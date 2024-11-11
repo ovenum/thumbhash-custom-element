@@ -1,12 +1,12 @@
 import { test, expect } from "@playwright/test";
 import { scrollTo, scrollToEnd, expectScrollPosition, sleep } from "./support";
 
-test.describe("Features", () => {
+test.describe("Strategies", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
   });
 
-  test("renders a canvas with the thumbhash", async ({ page }) => {
+  test("Renders a canvas (strategy: 'canvas')", async ({ page }) => {
     await page.goto('/');
     page.setViewportSize({ width: 1000, height: 1000 });
 
@@ -20,7 +20,7 @@ test.describe("Features", () => {
     expect(canvas).toHaveAttribute('style', 'width: 100%; height: 100%;');
   });
 
-  test("renders a div with the average color", async ({ page }) => {
+  test("Renders a div with the average color (strategy: 'average')", async ({ page }) => {
     await page.goto('/');
     page.setViewportSize({ width: 1000, height: 1000 });
 
@@ -31,7 +31,7 @@ test.describe("Features", () => {
     expect(div).toHaveAttribute('style', 'width: 100%; height: 100%; background: rgb(163, 134, 104);');
   });
 
-  test("renders an image with a data URI", async ({ page }) => {
+  test("Renders an image with a data URI (strategy: 'img')", async ({ page }) => {
     await page.goto('/');
     page.setViewportSize({ width: 1000, height: 1000 });
 

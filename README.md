@@ -78,13 +78,13 @@ thumb-hash {
 
 The default strategy of `<thumb-hash>` is to render a `canvas` with the blurry representation of the thumbhash. Other options are `image` and `average`:
 
-### Strategy: `image`
+### Strategy: `img`
 
-Add the attribute `strategy="image"` to render an image with a data URI:
+Add the attribute `strategy="img"` to render an image with a data URI:
 
 ```diff
 <figure>
-+  <thumb-hash strategy="image" value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" />
++  <thumb-hash strategy="img" value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" />
   <img src="https://example.com/image.jpg" loading="lazy" width="32" height="32" alt="My large lazy-loaded image">
 </figure>
 ```
@@ -93,7 +93,7 @@ Add the attribute `strategy="image"` to render an image with a data URI:
 
 ```diff
 <figure>
-+  <thumb-hash strategy="image" value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" aria-hidden="true">
++  <thumb-hash strategy="img" value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" aria-hidden="true">
 +    ⏷ #shadow-root (open)
 +       <img alt="" src="data:image/png;base64,iVBORw0KGgo..." style="width: 100%; height: 100%;">
 +  </thumb-hash>
