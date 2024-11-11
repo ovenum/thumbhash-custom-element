@@ -7,6 +7,8 @@ on:
   pull_request:
   workflow_dispatch:
 
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
 jobs:
   e2e-tests:
     name: Run E2E Tests
