@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 const baseURL = "http://localhost:8274";
 
 /**
- * See https://playwright.dev/docs/test-configuration.
+ * See https://playwright.dev/website/test-configuration.
  */
 export default defineConfig({
   /* Run this file before starting the tests */
@@ -32,7 +32,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   // Limit the number of failures on CI to save resources
   maxFailures: process.env.CI ? 10 : undefined,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
+  /* Reporter to use. See https://playwright.dev/website/test-reporters */
   reporter: process.env.CI
     ? [
         ["dot"],
@@ -49,11 +49,11 @@ export default defineConfig({
     timeout: 3_000,
   },
 
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  /* Shared settings for all the projects below. See https://playwright.dev/website/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL,
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    /* Collect trace when retrying the failed test. See https://playwright.dev/website/trace-viewer */
     trace: "on-first-retry",
     /* Capture screenshot after each test failure. */
     screenshot: "only-on-failure",
@@ -73,8 +73,8 @@ export default defineConfig({
     url: baseURL,
     command:
       process.env.PLAYWRIGHT_ENV === "dev"
-        ? "pnpm watch && pnpm run docs:dev"
-        : "pnpm run docs:serve",
+        ? "pnpm watch && pnpm run website:dev"
+        : "pnpm run website:serve",
     reuseExistingServer: !process.env.CI,
   },
 });

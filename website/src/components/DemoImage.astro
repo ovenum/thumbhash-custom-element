@@ -17,7 +17,7 @@ interface Props {
 const { imagePath, strategy = 'canvas', title } = Astro.props;
 const image = (await dynamicViteAssetImport(imagePath)).default;
 
-const absoluteImagePath = `${process.cwd()}/docs/public${imagePath}`;
+const absoluteImagePath = `${process.cwd()}/website/public${imagePath}`;
 const hash = await getThumbHashAttribute(absoluteImagePath);
 
 ---
