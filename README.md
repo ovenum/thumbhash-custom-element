@@ -76,30 +76,7 @@ thumb-hash {
 
 ## Strategies
 
-The default strategy of `<thumb-hash>` is to render a canvas with the blurry representation of the thumbhash. Other options are `image` and `average`:
-
-### Strategy: `average`
-
-Add the attribute `strategy="average"` to render a div with the average color:
-
-```diff
-<figure>
-+  <thumb-hash strategy="average" value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" />
-  <img src="https://example.com/image.jpg" loading="lazy" width="32" height="32" alt="My large lazy-loaded image">
-</figure>
-```
-
-**Result:**
-
-```diff
-<figure>
-+  <thumb-hash strategy="average" value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" aria-hidden="true">
-+    ⏷ #shadow-root (open)
-+       <div style="width: 100%; height: 100%; background: rgb(111, 51, 0);"></div>
-+  </thumb-hash>
-  <img src="https://example.com/image.jpg" loading="lazy" width="32" height="32" alt="My large lazy-loaded image">
-</figure>
-```
+The default strategy of `<thumb-hash>` is to render a `canvas` with the blurry representation of the thumbhash. Other options are `image` and `average`:
 
 ### Strategy: `image`
 
@@ -124,3 +101,25 @@ Add the attribute `strategy="image"` to render an image with a data URI:
 </figure>
 ```
 
+### Strategy: `average`
+
+Add the attribute `strategy="average"` to render a div with the average color:
+
+```diff
+<figure>
++  <thumb-hash strategy="average" value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" />
+  <img src="https://example.com/image.jpg" loading="lazy" width="32" height="32" alt="My large lazy-loaded image">
+</figure>
+```
+
+**Result:**
+
+```diff
+<figure>
++  <thumb-hash strategy="average" value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" aria-hidden="true">
++    ⏷ #shadow-root (open)
++       <div style="width: 100%; height: 100%; background: rgb(111, 51, 0);"></div>
++  </thumb-hash>
+  <img src="https://example.com/image.jpg" loading="lazy" width="32" height="32" alt="My large lazy-loaded image">
+</figure>
+```
