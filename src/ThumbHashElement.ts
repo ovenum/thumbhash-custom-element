@@ -4,19 +4,12 @@ import { decodeThumbHash, getAverageColor } from "./support/functions.js";
  * A custom element that automatically renders a thumbhash placeholder
  */
 export class ThumbHashElement extends HTMLElement {
-  canvas: HTMLCanvasElement;
   shadowRoot: ShadowRoot;
 
   constructor() {
     super();
 
     this.shadowRoot = this.attachShadow({ mode: "open" });
-
-    // Create a canvas and add it to the shadow root
-    this.canvas = document.createElement("canvas");
-
-    this.canvas.style.width = "100%";
-    this.canvas.style.height = "100%";
 
     // Hide from screen readers
     this.setAttribute("aria-hidden", "true");
@@ -36,11 +29,7 @@ export class ThumbHashElement extends HTMLElement {
     if (!hash) {
       return;
     }
-    if (this.average) {
-      this.renderAverage(hash);
-      return;
-    }
-    this.renderCanvas(hash);
+    this[this.average ? "renderAverage" : "renderCanvas"](hash);
   }
 
   get value() {
@@ -56,18 +45,22 @@ export class ThumbHashElement extends HTMLElement {
    */
   renderCanvas(hash: string) {
     const { width, height, pixels } = decodeThumbHash(hash);
+    const canvas = document.createElement("canvas");
 
-    const ctx = this.canvas.getContext("2d");
+    canvas.style.width = "100%";
+    canvas.style.height = "100%";
+
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    this.canvas.width = width;
-    this.canvas.height = height;
+    canvas.width = width;
+    canvas.height = height;
 
     const imageData = ctx.createImageData(width, height);
     imageData.data.set(pixels);
     ctx.putImageData(imageData, 0, 0);
 
-    this.shadowRoot.appendChild(this.canvas);
+    this.shadowRoot.appendChild(canvas);
   }
 
   /**
