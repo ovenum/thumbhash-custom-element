@@ -57,6 +57,7 @@
     "@astrojs/mdx": "^3.1.7",
     "@changesets/cli": "^2.27.9",
     "@playwright/test": "^1.47.2",
+    "@types/node": "^22.9.0",
     "astro": "^4.15.9",
     "astro-expressive-code": "^0.37.0",
     "astro-feather": "^1.0.0",
