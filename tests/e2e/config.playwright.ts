@@ -73,7 +73,7 @@ export default defineConfig({
     url: baseURL,
     command:
       process.env.PLAYWRIGHT_ENV === "dev"
-        ? "pnpm watch && pnpm run website:dev"
+        ? "pnpm run website:dev"
         : "pnpm run website:serve",
     reuseExistingServer: !process.env.CI,
   },
