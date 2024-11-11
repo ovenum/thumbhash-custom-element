@@ -35,7 +35,7 @@ Or include the minified production file from a CDN:
 
 ### Markup
 
-**Input:** Now can start adding `<thumb-hash>` elements to your markup:
+Add `<thumb-hash>` elements with your pre-generated thumbhash strings to your markup:
 
 ```diff
 <figure>
@@ -44,7 +44,7 @@ Or include the minified production file from a CDN:
 </figure>
 ```
 
-**Output**: The custom element will automatically create a canvas with the thumbhash image for you. It will also hide the element from screen readers:
+**Result:**
 
 ```diff
 <figure>
@@ -74,25 +74,53 @@ thumb-hash {
 }
 ```
 
-### Average color
+## Strategies
 
-If you add the boolean attribute `average` to your `<thumb-hash />`, the average color of the image will be rendered instead of the blurry thumbhash image:
+The default strategy of `<thumb-hash>` is to render a canvas with the blurry representation of the thumbhash. Other options are `image` and `average`:
+
+### Strategy: `average`
+
+Add the attribute `strategy="average"` to render a div with the average color:
 
 ```diff
 <figure>
-+  <thumb-hash average value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" />
++  <thumb-hash strategy="average" value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" />
   <img src="https://example.com/image.jpg" loading="lazy" width="32" height="32" alt="My large lazy-loaded image">
 </figure>
 ```
 
-The custom element will automatically create a canvas with the thumbhash image for you:
+**Result:**
 
 ```diff
 <figure>
-+  <thumb-hash average value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" aria-hidden="true">
++  <thumb-hash strategy="average" value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" aria-hidden="true">
 +    ⏷ #shadow-root (open)
 +       <div style="width: 100%; height: 100%; background: rgb(111, 51, 0);"></div>
 +  </thumb-hash>
   <img src="https://example.com/image.jpg" loading="lazy" width="32" height="32" alt="My large lazy-loaded image">
 </figure>
 ```
+
+### Strategy: `image`
+
+Add the attribute `strategy="image"` to render an image with a data URI:
+
+```diff
+<figure>
++  <thumb-hash strategy="image" value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" />
+  <img src="https://example.com/image.jpg" loading="lazy" width="32" height="32" alt="My large lazy-loaded image">
+</figure>
+```
+
+**Result:**
+
+```diff
+<figure>
++  <thumb-hash strategy="image" value="YTkGJwaRhWUIt4lbgnhZl3ath2BUBGYA" aria-hidden="true">
++    ⏷ #shadow-root (open)
++       <img alt="" src="data:image/png;base64,iVBORw0KGgo..." style="width: 100%; height: 100%;">
++  </thumb-hash>
+  <img src="https://example.com/image.jpg" loading="lazy" width="32" height="32" alt="My large lazy-loaded image">
+</figure>
+```
+

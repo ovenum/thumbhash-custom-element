@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { SITE_DESCRIPTION } from "../consts";
-import Images from "../components/Images.astro";
+import DemoImage from "../components/DemoImage.astro";
 ---
 
 <Layout isFrontPage={true}>
@@ -13,12 +13,11 @@ import Images from "../components/Images.astro";
 
   <section class="demos" data-testid="demos-1">
 
-      <Images
+      <DemoImage
         imagePath="/images/original.jpg"
         title="Thumbhash"
-        strategy="canvas"
       />
-      <Images
+      <DemoImage
         imagePath="/images/original.jpg"
         title="Average Color"
         strategy="average"
@@ -28,12 +27,12 @@ import Images from "../components/Images.astro";
 
   <section class="demos" data-testid="demos-2">
 
-    <Images
+    <DemoImage
       imagePath="/images/duck-2.jpg"
       title="Thumbhash"
-      strategy="canvas"
+      strategy="image"
     />
-    <Images
+    <DemoImage
       imagePath="/images/duck-2.jpg"
       title="Average Color"
       strategy="average"
@@ -41,12 +40,12 @@ import Images from "../components/Images.astro";
   </section>
 
   <section class="demos" data-testid="demos-3">
-    <Images
+    <DemoImage
       imagePath="/images/duckling.jpg"
       title="Thumbhash"
       strategy="canvas"
     />
-    <Images
+    <DemoImage
       imagePath="/images/duckling.jpg"
       title="Average Color"
       strategy="average"

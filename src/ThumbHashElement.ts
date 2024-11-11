@@ -1,4 +1,6 @@
-import { decodeThumbHash, getAverageColor } from "./support/functions.js";
+import { decodeThumbHash, getAverageColor, getDataURI } from "./support/functions.js";
+
+type Strategy = "canvas" | "image" | "average";
 
 /**
  * A custom element that automatically renders a thumbhash placeholder
@@ -29,11 +31,39 @@ export class ThumbHashElement extends HTMLElement {
     if (!hash) {
       return;
     }
-    this[this.average ? "renderAverage" : "renderCanvas"](hash);
+    const { strategy } = this;
+    switch(this.strategy) {
+      case 'canvas':
+        this.renderCanvas(hash);
+        break;
+
+      case 'image':
+        this.renderImage(hash);
+        break;
+
+      case 'average':
+        this.renderAverage(hash);
+        break;
+    }
   }
 
   get value() {
     return this.getAttribute("value") || "";
+  }
+
+  get strategy(): Strategy {
+    const attr = (this.getAttribute("strategy") || "").trim();
+
+    switch (attr) {
+      case "average":
+        return "average";
+
+      case "image":
+        return "image";
+
+      default:
+        return "canvas";
+    }
   }
 
   get average() {
@@ -73,5 +103,17 @@ export class ThumbHashElement extends HTMLElement {
     div.style.height = "100%";
     div.style.background = rgba;
     this.shadowRoot.appendChild(div);
+  }
+
+  /**
+   * Render an image with a dataURI
+   */
+  renderImage(hash: string) {
+    const image = document.createElement('img');
+    image.style.width = '100%';
+    image.style.height = '100%';
+    image.alt = '';
+    image.src = getDataURI(hash);
+    this.shadowRoot.appendChild(image);
   }
 }
