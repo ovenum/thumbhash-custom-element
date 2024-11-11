@@ -20,7 +20,7 @@ test.describe("Strategies", () => {
     expect(canvas).toHaveAttribute('style', 'width: 100%; height: 100%;');
   });
 
-  test("Renders a div with the average color (strategy: 'average')", async ({ page }) => {
+  test("Renders the average color in a div (strategy: 'average')", async ({ page }) => {
     await page.goto('/');
     page.setViewportSize({ width: 1000, height: 1000 });
 
@@ -37,7 +37,7 @@ test.describe("Strategies", () => {
 
     await page.waitForTimeout(2000);
 
-    const div = page.getByTestId('demos-2').locator('thumb-hash[strategy="image"] img');
+    const div = page.getByTestId('demos-2').locator('thumb-hash[strategy="img"] img');
     expect(div).toHaveCount(1);
     expect(div).toHaveAttribute('style', 'width: 100%; height: 100%;');
     expect(div).toHaveAttribute('alt', '');
