@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.3
+
+### Patch Changes
+
+- [#21](https://github.com/hirasso/thumbhash-custom-element/pull/21) [`b4f3030`](https://github.com/hirasso/thumbhash-custom-element/commit/b4f3030dd8820c0f519c60b0b1ceb69e39094499) Thanks [@hirasso](https://github.com/hirasso)! - Make package public
+
 ## 0.2.2
 
 ### Patch Changes
