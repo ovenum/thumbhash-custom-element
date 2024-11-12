@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.2.2
+
+### Patch Changes
+
+- [#14](https://github.com/hirasso/thumbhash-custom-element/pull/14) [`05220b2`](https://github.com/hirasso/thumbhash-custom-element/commit/05220b2d1ac68ebadd04e35d2789d8d0195a3846) Thanks [@hirasso](https://github.com/hirasso)! - Add unit test for UMD export
+
+- [#18](https://github.com/hirasso/thumbhash-custom-element/pull/18) [`19e3f52`](https://github.com/hirasso/thumbhash-custom-element/commit/19e3f527475fec674bffbb3fad592f39516c59d1) Thanks [@hirasso](https://github.com/hirasso)! - Attempt to fix actions
+
+- [#19](https://github.com/hirasso/thumbhash-custom-element/pull/19) [`f8476a9`](https://github.com/hirasso/thumbhash-custom-element/commit/f8476a9d59f789a86f5beb2b6e93aa5f481bf363) Thanks [@hirasso](https://github.com/hirasso)! - fix error: Unable to locate executable file: changeset.
+
+- [#17](https://github.com/hirasso/thumbhash-custom-element/pull/17) [`4d9e708`](https://github.com/hirasso/thumbhash-custom-element/commit/4d9e708edafb5332b1f5388fd4d0faa0c0b79f8a) Thanks [@hirasso](https://github.com/hirasso)! - Setup PNMP first so that it can be cached
+
+- [#16](https://github.com/hirasso/thumbhash-custom-element/pull/16) [`76303e6`](https://github.com/hirasso/thumbhash-custom-element/commit/76303e6395b7ed655a09e9debf5bf886983649fe) Thanks [@hirasso](https://github.com/hirasso)! - Only run changesets action for repository owner 'hirasso'
+
+- [#15](https://github.com/hirasso/thumbhash-custom-element/pull/15) [`c7201b7`](https://github.com/hirasso/thumbhash-custom-element/commit/c7201b7dbadf93860f3d5d909b76bfb8432e8984) Thanks [@hirasso](https://github.com/hirasso)! - Simplify changesets action
+
 ## 0.2.1
 
 ### Patch Changes
