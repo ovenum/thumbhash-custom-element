@@ -35,13 +35,18 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Run unit tests
+        run: pnpm run test:unit
+
       - name: Require Build
         run: pnpm build
 
+      - name: Install Playwright
+        id: install-playwright
+        uses: ./.github/actions/playwright
+
       - name: Run Playwright tests
-        run: |
-          pnpm test:e2e:install
-          pnpm test:e2e
+        run: pnpm run test:e2e
 
       - uses: daun/playwright-report-summary@v2
         with:
