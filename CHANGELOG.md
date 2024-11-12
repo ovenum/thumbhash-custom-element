@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.4
+
+### Patch Changes
+
+- babfe46: Add scope and motivation to the readme
+
 ## 0.2.3
 
 ### Patch Changes
