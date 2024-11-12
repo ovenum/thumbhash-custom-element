@@ -4,7 +4,6 @@ import { fileURLToPath } from "url";
 import path from "path";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const baseURL = "http://localhost:8274";
 
@@ -73,8 +72,8 @@ export default defineConfig({
     url: baseURL,
     command:
       process.env.PLAYWRIGHT_ENV === "dev"
-        ? "pnpm run website:dev"
-        : "pnpm run website:serve",
+        ? "pnpm website:dev"
+        : "pnpm website:serve",
     reuseExistingServer: !process.env.CI,
   },
 });
