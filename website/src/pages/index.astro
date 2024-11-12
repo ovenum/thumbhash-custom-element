@@ -12,21 +12,15 @@ import DemoImage from "../components/DemoImage.astro";
   </p>
 
   <section class="demos" data-testid="demos-1">
-
-      <DemoImage
-        imagePath="/images/original.jpg"
-        title="Thumbhash"
-      />
-      <DemoImage
-        imagePath="/images/original.jpg"
-        title="Average Color"
-        strategy="average"
-      />
-
+    <DemoImage imagePath="/images/original.jpg" title="Thumbhash" />
+    <DemoImage
+      imagePath="/images/original.jpg"
+      title="Average Color"
+      strategy="average"
+    />
   </section>
 
   <section class="demos" data-testid="demos-2">
-
     <DemoImage
       imagePath="/images/duck-2.jpg"
       title="Thumbhash"
@@ -60,7 +54,7 @@ import DemoImage from "../components/DemoImage.astro";
 </style>
 
 <script>
-  import ThumbHashElement from "../../../src/index.js";
+  import { ThumbHashElement } from "../../../src/index.js";
   ThumbHashElement.init();
   // console.log(document.querySelector('thumb-hash')?.shadowRoot?.querySelector('canvas')?.outerHTML);
 </script>

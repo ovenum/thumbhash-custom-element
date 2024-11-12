@@ -5,41 +5,53 @@ on:
     branches:
       - main
 
-permissions:
-  id-token: write
-  contents: write
-  pull-requests: write
-
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
     name: Release
+    if: github.repository_owner == 'expressive-code'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v3
+      - name: Check out repository
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js 20.x
-        uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: 20
+          cache: 'pnpm'
 
-      - name: Install pnpm
-        run: npm install -g pnpm
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
-      - name: Build package
-        run: pnpm run build
+      - name: Check for unreleased changesets
+        id: has-changesets
+        uses: andstor/file-existence-action@v2
+        with:
+          files: ".changeset/!(README).md"
 
-      - name: Create Release Pull Request or Publish to npm
+      # If there are unreleased changesets, validate the project before creating the changesets PR
+      - name: Require build and test to pass
+        if: steps.has-changesets.outputs.files_exists == 'true'
+        run: |
+          pnpm build
+          pnpm test
+
+      # Run changesets action either if there are unreleased changesets (= a PR must be created)
+      # or if the commit message matches the release PR (= new versions must be published to NPM)
+      - name: Create changesets PR or publish to NPM
         id: changesets
+        if: steps.has-changesets.outputs.files_exists == 'true' || startsWith(github.event.head_commit.message, '[CI] Release')
         uses: changesets/action@v1
-        # with:
-          # This expects you to have a script called release which does a build for your packages and calls changeset publish
-          # publish: pnpm publish --access public --no-git-checks
+        with:
+          title: '[CI] Release'
+          commit: '[CI] Release'
+          version: 'pnpm ci-version'
+          publish: 'pnpm ci-publish'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

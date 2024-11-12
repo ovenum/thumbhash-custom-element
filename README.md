@@ -18,7 +18,7 @@ npm i @hirasso/thumbhash-custom-element
 ```
 
 ```js
-import ThumbHashElement from "thumbhash-custom-element";
+import { ThumbHashElement } from "thumbhash-custom-element";
 ThumbHashElement.init();
 ```
 
@@ -26,7 +26,7 @@ Or include the minified production file from a CDN:
 
 ```html
 <script type="module">
-  import ThumbHashElement from "https://unpkg.com/@hirasso/thumbhash-custom-element@0?module";
+  import { ThumbHashElement } from "https://unpkg.com/@hirasso/thumbhash-custom-element@0?module";
   ThumbHashElement.init();
 </script>
 ```

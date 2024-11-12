@@ -4,12 +4,12 @@ import {
   getDataURI,
 } from "./support/functions.js";
 
-type Strategy = "canvas" | "img" | "average";
+import type { Strategy } from "./support/defs.js";
 
 /**
  * A custom element that automatically renders a thumbhash placeholder
  */
-export class ThumbHashElement extends HTMLElement {
+export default class ThumbHashElement extends HTMLElement {
   shadowRoot: ShadowRoot;
 
   constructor() {
