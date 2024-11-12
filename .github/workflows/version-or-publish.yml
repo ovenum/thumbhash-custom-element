@@ -16,14 +16,15 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      # Setup PNPM first, so that we use the cache in the next action
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
-
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v4
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
