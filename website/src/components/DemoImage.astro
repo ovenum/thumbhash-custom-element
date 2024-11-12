@@ -9,25 +9,23 @@ import {
 } from "../js/utils.js";
 
 interface Props {
-  strategy: "canvas" | "average";
+  strategy?: "canvas" | "img" | "average";
   title: string;
   imagePath: string;
 }
 
-const { imagePath, strategy, title } = Astro.props;
+const { imagePath, strategy = 'canvas', title } = Astro.props;
 const image = (await dynamicViteAssetImport(imagePath)).default;
 
-const average = strategy === "average";
-
-const absoluteImagePath = `${process.cwd()}/docs/public${imagePath}`;
+const absoluteImagePath = `${process.cwd()}/website/public${imagePath}`;
 const hash = await getThumbHashAttribute(absoluteImagePath);
 
 ---
 
-<div class:list={["demo", `--${strategy}`]}>
+<div class:list={["demo"]}>
   <h2>{title}</h2>
   <figure
-    class="demo-image"
+    class:list={["demo-image", `strategy--${strategy}`]}
     style={{ "aspect-ratio": image.width / image.height }}
   >
     <button
@@ -40,7 +38,7 @@ const hash = await getThumbHashAttribute(absoluteImagePath);
       <span class="show-if-visible"><EyeOffIcon /> Hide image</span>
     </button>
 
-    <thumb-hash average={average} value={hash}></thumb-hash>
+    <thumb-hash {strategy} value={hash}></thumb-hash>
     <Image src={image} alt="A bird." loading="lazy" />
   </figure>
 </div>

@@ -1,22 +1,21 @@
-import { decodeThumbHash, getAverageColor } from "./support/functions.js";
+import {
+  decodeThumbHash,
+  getAverageColor,
+  getDataURI,
+} from "./support/functions.js";
+
+type Strategy = "canvas" | "img" | "average";
 
 /**
  * A custom element that automatically renders a thumbhash placeholder
  */
 export class ThumbHashElement extends HTMLElement {
-  canvas: HTMLCanvasElement;
   shadowRoot: ShadowRoot;
 
   constructor() {
     super();
 
     this.shadowRoot = this.attachShadow({ mode: "open" });
-
-    // Create a canvas and add it to the shadow root
-    this.canvas = document.createElement("canvas");
-
-    this.canvas.style.width = "100%";
-    this.canvas.style.height = "100%";
 
     // Hide from screen readers
     this.setAttribute("aria-hidden", "true");
@@ -36,15 +35,32 @@ export class ThumbHashElement extends HTMLElement {
     if (!hash) {
       return;
     }
-    if (this.average) {
-      this.renderAverage(hash);
-      return;
+
+    switch (this.strategy) {
+      case "img":
+        this.renderImage(hash);
+        break;
+
+      case "average":
+        this.renderAverage(hash);
+        break;
+
+      default:
+        this.renderCanvas(hash);
+        break;
     }
-    this.renderCanvas(hash);
   }
 
   get value() {
     return this.getAttribute("value") || "";
+  }
+
+  get strategy(): Strategy {
+    const attr = (this.getAttribute("strategy") || "").trim();
+    if (attr === "img" || attr === "average") {
+      return attr;
+    }
+    return "canvas";
   }
 
   get average() {
@@ -56,18 +72,22 @@ export class ThumbHashElement extends HTMLElement {
    */
   renderCanvas(hash: string) {
     const { width, height, pixels } = decodeThumbHash(hash);
+    const canvas = document.createElement("canvas");
 
-    const ctx = this.canvas.getContext("2d");
+    canvas.style.width = "100%";
+    canvas.style.height = "100%";
+
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    this.canvas.width = width;
-    this.canvas.height = height;
+    canvas.width = width;
+    canvas.height = height;
 
     const imageData = ctx.createImageData(width, height);
     imageData.data.set(pixels);
     ctx.putImageData(imageData, 0, 0);
 
-    this.shadowRoot.appendChild(this.canvas);
+    this.shadowRoot.appendChild(canvas);
   }
 
   /**
@@ -80,5 +100,17 @@ export class ThumbHashElement extends HTMLElement {
     div.style.height = "100%";
     div.style.background = rgba;
     this.shadowRoot.appendChild(div);
+  }
+
+  /**
+   * Render an image with a dataURI
+   */
+  renderImage(hash: string) {
+    const image = document.createElement("img");
+    image.style.width = "100%";
+    image.style.height = "100%";
+    image.alt = "";
+    image.src = getDataURI(hash);
+    this.shadowRoot.appendChild(image);
   }
 }

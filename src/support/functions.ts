@@ -1,4 +1,4 @@
-import { thumbHashToAverageRGBA, thumbHashToRGBA } from "thumbhash";
+import { thumbHashToAverageRGBA, thumbHashToRGBA, thumbHashToDataURL } from "thumbhash";
 
 /**
  * Get the bytes from a hash
@@ -28,4 +28,11 @@ export function getAverageColor(hash: string) {
 
   // Return a CSS-compatible rgba string
   return `rgb(${red} ${green} ${blue})`;
+}
+
+/**
+ * Get the data URI for a hash
+ */
+export function getDataURI(hash: string) {
+  return thumbHashToDataURL(getBytes(hash));
 }
