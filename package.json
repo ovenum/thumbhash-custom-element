@@ -46,9 +46,12 @@
     "test": "pnpm run test:unit && pnpm run test:e2e",
     "test:unit": "vitest run --config ./tests/unit/vitest.config.ts",
     "test:unit:watch": "vitest --config ./tests/unit/vitest.config.ts",
-    "test:e2e": "pnpm exec playwright test --config ./tests/e2e/config.playwright.ts",
+    "test:e2e": "pnpm build && pnpm exec playwright test --config ./tests/e2e/config.playwright.ts",
     "test:e2e:dev": "PLAYWRIGHT_ENV=dev pnpm run test:e2e --ui",
-    "test:e2e:install": "pnpm exec playwright install --with-deps"
+    "test:e2e:install": "pnpm exec playwright install --with-deps",
+    "release": "pnpm validate && pnpm bump && changeset publish",
+    "ci-version": "changeset version && pnpm install --no-frozen-lockfile",
+    "ci-publish": "pnpm build && pnpm test && changeset publish"
   },
   "dependencies": {
     "thumbhash": "^0.1.1"

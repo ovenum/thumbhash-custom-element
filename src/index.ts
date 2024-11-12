@@ -1,3 +1,5 @@
-import { ThumbHashElement } from "./ThumbHashElement.js";
+import ThumbHashElement from "./ThumbHashElement.js";
+import type { Strategy } from "./support/defs.js";
 
-export default ThumbHashElement;
+export { ThumbHashElement };
+export type { Strategy };
