@@ -45,8 +45,10 @@ jobs:
         id: install-playwright
         uses: ./.github/actions/playwright
 
-      - run: "echo Playwright version: \"${{ steps.install-playwright.outputs.version }}\""
-      - run: "echo Playwright cached: \"${{ steps.install-playwright.outputs.cache-hit }}\""
+      - name: Debug Playwright Cache
+        run: |
+          echo "Playwright version – ${{ steps.install-playwright.outputs.version }}"
+          echo "Playwright cached – ${{ steps.install-playwright.outputs.cache-hit }}"
 
       - name: Run Playwright tests
         run: pnpm run test:e2e
