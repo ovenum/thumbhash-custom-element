@@ -38,14 +38,14 @@ jobs:
       - name: Run unit tests
         run: pnpm run test:unit
 
-      - name: Require Build
+      - name: Test build
         run: pnpm build
 
       - name: Install Playwright
         id: install-playwright
         uses: ./.github/actions/playwright
 
-      - name: Debug Playwright Cache
+      - name: Debug Playwright cache
         run: |
           echo "Playwright version – ${{ steps.install-playwright.outputs.version }}"
           echo "Playwright cached – ${{ steps.install-playwright.outputs.cache-hit }}"
