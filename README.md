@@ -9,6 +9,10 @@
 
 [thumbhash-custom-element.netlify.app](https://thumbhash-custom-element.netlify.app)
 
+## Scope & Motivation
+
+This package is intended for **frontend-only use only**. It assumes you have **already pre-generated your thumbhashes on the server or during an SSG build step**. Many server-side libraries already provide [convenience functions](https://github.com/SRWieZ/thumbhash?tab=readme-ov-file#usage) that will generate a thumbhash data URI for you. This is fine for pages with a few images, but will quickly increase the size of your html if you have more images. This is where `thumbhash-custom-element` comes in. All data-heavy calculation will be executed on the frontend, keeping your html small.
+
 ## Installation
 
 Install from npm and import it into your bundle:
@@ -76,7 +80,7 @@ thumb-hash {
 
 ## Strategies
 
-The default strategy of `<thumb-hash>` is to render a `canvas` with the blurry representation of the thumbhash. Other options are `image` and `average`:
+The default strategy of `<thumb-hash>` is to render a `canvas` with the blurry representation of the thumbhash. Other options are `img` and `average`:
 
 ### Strategy: `img`
 
