@@ -10,7 +10,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   release:
     name: Release
-    if: github.repository_owner == 'expressive-code'
+    if: github.repository_owner == 'hirasso'
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
