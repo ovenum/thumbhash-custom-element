@@ -1,4 +1,4 @@
-name: Release
+name: Version or Publish
 
 on:
   push:
@@ -9,7 +9,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
-    name: Release
+    name: Create Version PR or Publish
     if: github.repository_owner == 'hirasso'
     runs-on: ubuntu-latest
     steps:
