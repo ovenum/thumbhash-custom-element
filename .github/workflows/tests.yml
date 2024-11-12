@@ -1,4 +1,4 @@
-name: E2E Tests
+name: Tests
 
 on:
   push:
@@ -11,8 +11,8 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  e2e-tests:
-    name: Run E2E Tests
+  tests:
+    name: Run Tests
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -35,13 +35,23 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Run unit tests
+        run: pnpm run test:unit
+
       - name: Require Build
         run: pnpm build
 
-      - name: Run Playwright tests
+      - name: Install Playwright
+        id: install-playwright
+        uses: ./.github/actions/playwright
+
+      - name: Debug Playwright Cache
         run: |
-          pnpm test:e2e:install
-          pnpm test:e2e
+          echo "Playwright version – ${{ steps.install-playwright.outputs.version }}"
+          echo "Playwright cached – ${{ steps.install-playwright.outputs.cache-hit }}"
+
+      - name: Run Playwright tests
+        run: pnpm run test:e2e
 
       - uses: daun/playwright-report-summary@v2
         with:
