@@ -2,7 +2,6 @@ name: Install Playwright
 description: Install Playwright and dependencies with cache
 
 # https://github.com/microsoft/playwright/issues/7249#issuecomment-2334627973
-# https://github.com/dai-shi/waku/pull/962
 
 inputs:
   working-directory:

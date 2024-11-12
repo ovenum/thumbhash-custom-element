@@ -3,12 +3,10 @@ name: Tests
 on:
   push:
     branches: [main]
-    paths: ["src/**", ".github/workflows/**", "website/**", "tests/**"]
+    paths: ["src/**", ".github/workflows/**", "website/**", "tests/**", "package.json"]
   pull_request:
-    paths: ["src/**", ".github/workflows/**", "website/**", "tests/**"]
+    paths: ["src/**", ".github/workflows/**", "website/**", "tests/**", "package.json"]
   workflow_dispatch:
-
-concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   tests:
@@ -38,14 +36,14 @@ jobs:
       - name: Run unit tests
         run: pnpm run test:unit
 
-      - name: Require Build
+      - name: Test build
         run: pnpm build
 
       - name: Install Playwright
         id: install-playwright
         uses: ./.github/actions/playwright
 
-      - name: Debug Playwright Cache
+      - name: Debug Playwright cache
         run: |
           echo "Playwright version – ${{ steps.install-playwright.outputs.version }}"
           echo "Playwright cached – ${{ steps.install-playwright.outputs.cache-hit }}"
