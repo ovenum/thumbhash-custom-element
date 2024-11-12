@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.0
+
+### Minor Changes
+
+- [#8](https://github.com/hirasso/thumbhash-custom-element/pull/8) [`30e19c3`](https://github.com/hirasso/thumbhash-custom-element/commit/30e19c335248957e0abcead521e85b5cdd584e6b) Thanks [@hirasso](https://github.com/hirasso)! - deprecate boolean attribute `average` in favor of new attribute `strategy="canvas | img | average"`
+
+### Patch Changes
+
+- [#9](https://github.com/hirasso/thumbhash-custom-element/pull/9) [`205fad2`](https://github.com/hirasso/thumbhash-custom-element/commit/205fad2f9b197eb93c4f6880980dc358c80f3deb) Thanks [@hirasso](https://github.com/hirasso)! - Retry changesets
+
 ## 0.1.2
 
 ### Patch Changes
