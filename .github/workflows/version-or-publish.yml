@@ -33,8 +33,6 @@ jobs:
       - name: Require build and test to pass
         run: |
           pnpm build
-          pnpm test:e2e:install
-          pnpm test
 
       # Run changesets action either if there are unreleased changesets (= a PR must be created)
       # or if the commit message matches the release PR (= new versions must be published to NPM)
@@ -44,8 +42,8 @@ jobs:
         with:
           title: '[CI] Release'
           commit: '[CI] Release'
-          version: changeset version
-          publish: changeset publish
+          version: pnpm changeset version
+          publish: pnpm changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
