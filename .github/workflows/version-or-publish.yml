@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
+          cache: pnpm
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -33,6 +33,7 @@ jobs:
       - name: Require build and test to pass
         run: |
           pnpm build
+          pnpm test:e2e:install
           pnpm test
 
       # Run changesets action either if there are unreleased changesets (= a PR must be created)
