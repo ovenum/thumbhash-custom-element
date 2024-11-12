@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1
+
+### Patch Changes
+
+- [#12](https://github.com/hirasso/thumbhash-custom-element/pull/12) [`f6d100a`](https://github.com/hirasso/thumbhash-custom-element/commit/f6d100a1c6ecc8a62f663336b602e50a9a9c4696) Thanks [@hirasso](https://github.com/hirasso)! - Let changesets do everything
+
 ## 0.2.0
 
 ### Minor Changes
