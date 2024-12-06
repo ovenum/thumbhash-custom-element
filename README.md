@@ -22,7 +22,7 @@ npm i @hirasso/thumbhash-custom-element
 ```
 
 ```js
-import { ThumbHashElement } from "thumbhash-custom-element";
+import { ThumbHashElement } from "@hirasso/thumbhash-custom-element";
 ThumbHashElement.init();
 ```
 
