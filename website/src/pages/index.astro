@@ -55,14 +55,14 @@ const isBuild = import.meta.env.MODE === "production";
   }
 </style>
 
-{isDev ? (
-  <!-- compiled from typescript (dev mode) -->
-  <script>
-    import { ThumbHashElement } from "../../../src/index.js";
-    ThumbHashElement.init();
-  </script>
-
-) : (
-  <!-- comiled umd module  -->
-  <script is:inline src="/thumbhash-custom-element/index.umd.js"></script>
-)}
+<script>
+  if (import.meta.env.MODE === 'development') {
+    import("../../../src/index.js").then(({ ThumbHashElement }) => {
+      ThumbHashElement.init();
+    });
+  } else {
+    const script = document.createElement('script');
+    script.src = '/thumbhash-custom-element/index.umd.js';
+    document.body.appendChild(script);
+  }
+</script>
