@@ -38,7 +38,7 @@
     "prepublishOnly": "pnpm build",
     "build": "pnpm clean && pnpm build:module && pnpm build:bundle",
     "build:module": "BROWSERSLIST_ENV=modern microbundle src/index.ts --format modern,esm,cjs",
-    "build:bundle": "BROWSERSLIST_ENV=production microbundle src/ThumbHashElement.ts --format umd --external none",
+    "build:bundle": "BROWSERSLIST_ENV=production microbundle src/umd.ts --format umd --external none",
     "watch": "BROWSERSLIST_ENV=development microbundle src/index.ts --watch --format modern",
     "website:dev": "astro dev --root website",
     "website:build": "astro build --root website",
