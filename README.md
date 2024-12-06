@@ -26,13 +26,10 @@ import { ThumbHashElement } from "@hirasso/thumbhash-custom-element";
 ThumbHashElement.init();
 ```
 
-Or include the minified production file from a CDN:
+Or include the self-initializing production build from a CDN:
 
 ```html
-<script type="module">
-  import { ThumbHashElement } from "https://unpkg.com/@hirasso/thumbhash-custom-element@0?module";
-  ThumbHashElement.init();
-</script>
+<script src="https://unpkg.com/@hirasso/thumbhash-custom-element@0"></script>
 ```
 
 ## Usage
