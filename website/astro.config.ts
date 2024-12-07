@@ -21,6 +21,9 @@ const expressiveCodeOptions = {
 export default defineConfig({
   site: "https://thumbhash-custom-element.netlify.app",
   server: { port: 8274, host: false },
+  devToolbar: {
+    enabled: false
+  },
   integrations: [
     buildAndInjectDistFiles('thumbhash-custom-element'),
     expressiveCode(expressiveCodeOptions),
