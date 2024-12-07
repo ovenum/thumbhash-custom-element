@@ -10,12 +10,10 @@ import type { Strategy } from "./support/defs.js";
  * A custom element that automatically renders a thumbhash placeholder
  */
 export default class ThumbHashElement extends HTMLElement {
-  shadowEl: ShadowRoot;
-
   constructor() {
     super();
 
-    this.shadowEl = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
 
     // Hide from screen readers
     this.setAttribute("aria-hidden", "true");
@@ -87,7 +85,7 @@ export default class ThumbHashElement extends HTMLElement {
     imageData.data.set(pixels);
     ctx.putImageData(imageData, 0, 0);
 
-    this.shadowEl.appendChild(canvas);
+    this.shadowRoot!.appendChild(canvas);
   }
 
   /**
@@ -99,7 +97,7 @@ export default class ThumbHashElement extends HTMLElement {
     div.style.width = "100%";
     div.style.height = "100%";
     div.style.background = rgba;
-    this.shadowEl.appendChild(div);
+    this.shadowRoot!.appendChild(div);
   }
 
   /**
@@ -111,6 +109,7 @@ export default class ThumbHashElement extends HTMLElement {
     image.style.height = "100%";
     image.alt = "";
     image.src = getDataURI(hash);
-    this.shadowEl.appendChild(image);
+
+    this.shadowRoot!.appendChild(image);
   }
 }
