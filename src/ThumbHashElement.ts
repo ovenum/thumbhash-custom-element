@@ -24,7 +24,7 @@ export default class ThumbHashElement extends HTMLElement {
    */
   static init() {
     if (!window.customElements.get("thumb-hash")) {
-      customElements.define("thumb-hash", ThumbHashElement);
+      window.customElements.define("thumb-hash", ThumbHashElement);
     }
   }
 
